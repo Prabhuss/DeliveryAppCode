@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:scroll="clr-namespace:Xamarin.Forms.Extended;assembly=Xamarin.Forms.Extended.InfiniteScrolling"
+             xmlns:template="clr-namespace:PyDelivery.Views"
+             mc:Ignorable="d"
+             x:Class="PyDelivery.Views.OrderListTemplate">
+    <ContentView.Content>
+        <Grid>
+            <RefreshView IsRefreshing="{Binding IsBusy, Mode=TwoWay}" Command="{Binding LoadItemsCommand}">
+                <ListView x:Name="OrderView"
+                  BackgroundColor="LightGray" 
+                  HasUnevenRows="True" 
+                  ItemTapped="OrderView_ItemTapped"
+                  ItemsSource="{Binding OrderList}" 
+                  IsPullToRefreshEnabled="True"
+                  >
+                    <ListView.Behaviors>
+                        <scroll:InfiniteScrollBehavior/>
+                    </ListView.Behaviors>
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <template:OrderListContent />
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                    <ListView.Footer>
+                        <Grid Padding="6">
+                            <Label Text="{Binding ListFooterText}" FontAttributes="Bold" VerticalOptions="Center" HorizontalOptions="Center" />
+                        </Grid>
+                    </ListView.Footer>
+                </ListView>
+            </RefreshView>
+            <ActivityIndicator Color="IndianRed" x:Name="indicator"  HorizontalOptions="Center" VerticalOptions="Center"  />
+        </Grid>
+    </ContentView.Content>
+</ContentView>

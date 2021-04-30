@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:controls="clr-namespace:FloatingLabels.Controls" 
+             mc:Ignorable="d"
+             x:Class="PyDelivery.Views.OtpPage">
+    <ContentPage.Content>
+            <Grid VerticalOptions="FillAndExpand" BackgroundColor="white" >
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="4*"/>
+                </Grid.RowDefinitions>
+                <Frame x:Name="header" Grid.Row="0" BackgroundColor="#b51700" HasShadow="True">
+                </Frame>
+                <Frame Padding="20" Grid.Row="0" BackgroundColor="White" HasShadow="True" CornerRadius="150" HorizontalOptions="CenterAndExpand" VerticalOptions="End" Margin="0,0,0,-40"  >
+                    <Image Source="msg.png" HeightRequest="50" WidthRequest="50" />
+                </Frame>
+                <Frame x:Name="body" Grid.Row="1" VerticalOptions="Start" BackgroundColor="White"
+                       Margin="15,50,15,0" >
+                    <StackLayout>
+                        <StackLayout Spacing="30">
+                            <StackLayout Spacing="5" HorizontalOptions="Center">
+                                <Label Text="Enter Verification Code" TextColor="#b51700" FontSize="Title" FontAttributes="Bold"  HorizontalOptions="Center" />
+                                
+                                <Label x:Name="otpCaption" Text="OTP has been sent to " TextColor="Black"  HorizontalOptions="Center"/>
+                            </StackLayout>
+                            <BoxView   VerticalOptions="Center" HorizontalOptions="Start" HeightRequest="2" WidthRequest="50" Color="Transparent"></BoxView>
+                            <controls:FloatingLabelInput x:Name="otpEntry" Title="OTP Message" Keyboard="Numeric"/>
+                            <Button x:Name="veriftBtn" Style="{StaticResource buttonStyle}" Text="Verify" Clicked="veriftBtn_Clicked"/>
+                        </StackLayout>
+                        <Button Text="Change Number?" BackgroundColor="Transparent" Margin="0" TextColor="Red" HorizontalOptions="End" FontSize="Body" Clicked="Btn_changeNumber_Clicked" />
+                        <ActivityIndicator  x:Name="activityIndicatorOtpPage" IsRunning="{Binding IsBusy}" VerticalOptions="Center" HorizontalOptions="Center" Color="#b51700" />
+                    </StackLayout>
+                </Frame>
+            </Grid>
+    </ContentPage.Content>
+</ContentPage>

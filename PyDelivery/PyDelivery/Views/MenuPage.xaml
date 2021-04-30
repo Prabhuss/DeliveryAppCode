@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="PyDelivery.Views.MenuPage"
+             Title="Menu">
+
+    <StackLayout VerticalOptions="FillAndExpand" BackgroundColor="#EAEDED">
+        <Frame BackgroundColor="#b51700" HasShadow="True">
+            <Frame BackgroundColor="White" CornerRadius="150" HorizontalOptions="Center" Margin="20" VerticalOptions="Center" >
+                <Image Source="DeliveryAppIcon.png" HeightRequest="100" WidthRequest="100" />
+            </Frame>
+        </Frame>
+        <ListView x:Name="ListViewMenu"
+                  HeightRequest="300"
+                  VerticalOptions="Start">
+            <d:ListView.ItemsSource>
+                <x:Array Type="{x:Type x:String}">
+                    <x:String>Item 1</x:String>
+                    <x:String>Item 2</x:String>
+                </x:Array>
+            </d:ListView.ItemsSource>
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <Grid Padding="10">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="auto"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Image Grid.Column="0"  WidthRequest="28" Source="{Binding IconImg}" d:Source="{Binding .}" VerticalOptions="Center" HeightRequest="28"/>
+                            <Label Padding="5,0,0,0" Grid.Column="1" Text="{Binding Title}" d:Text="{Binding .}" VerticalOptions="Center" FontSize="Medium"/>
+                        </Grid>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        <!--
+        <Grid Padding="10">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Image Grid.Column="0"  WidthRequest="20" Source="logout.png"  HeightRequest="20"/>
+            <Button Padding="5,0,0,0" Grid.Column="1" HorizontalOptions="Start" Text="Logout"  FontSize="Medium" BackgroundColor="Transparent"/>
+        </Grid> -->
+    </StackLayout>
+
+</ContentPage>

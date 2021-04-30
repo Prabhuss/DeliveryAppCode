@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:controls="clr-namespace:FloatingLabels.Controls" 
+             mc:Ignorable="d"
+             x:Class="PyDelivery.Views.LogInPage">
+    <ContentPage.Content >
+            <Grid BackgroundColor="White" VerticalOptions="FillAndExpand" >
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="3*"/>
+                    <RowDefinition Height="2*"/>
+                </Grid.RowDefinitions>
+                <Frame Grid.Row="0" BackgroundColor="#b51700" CornerRadius="30" Margin="0,-40,0,0">
+                </Frame>
+                <Frame Grid.Row="0" Margin="30,0,30,-100" HasShadow="True" VerticalOptions="End" HorizontalOptions="End" BackgroundColor="White" CornerRadius="15">
+                    <StackLayout Spacing="10" BackgroundColor="Transparent">
+                        <Frame Padding="0" HasShadow="False" HorizontalOptions="Center" VerticalOptions="Center" >
+                        <Image Source="DeliveryAppIcon.png"  HeightRequest="90" WidthRequest="120" HorizontalOptions="Center" VerticalOptions="Center"/>
+                        </Frame>
+                        <BoxView   VerticalOptions="Center" HorizontalOptions="Start" HeightRequest="50" WidthRequest="50" Color="Transparent"></BoxView>
+                        <StackLayout Spacing="5">
+                            <Label Text="OTP Verification" TextColor="#b51700" FontSize="Title" FontAttributes="Bold" FontFamily="" HorizontalOptions="Center"></Label >
+                            
+                            <Label Text="Please enter your registred phone number" HorizontalOptions="Center" TextColor="Black"  FontFamily=""></Label >
+                        </StackLayout>
+                        <BoxView   VerticalOptions="Center" HorizontalOptions="Start" HeightRequest="50" WidthRequest="50" Color="Transparent"></BoxView>
+                        <controls:FloatingLabelInput x:Name="phoneNumber" Title="Phone Number" Keyboard="Numeric" />
+                        <Button x:Name="sentOtpBtn"  Text="Send OTP" Style="{StaticResource buttonStyle}" Clicked="sentOtpBtn_Clicked"/>
+                    </StackLayout>
+                </Frame>
+                <ActivityIndicator  x:Name="activityIndicator" IsRunning="{Binding IsBusy}" VerticalOptions="End" HorizontalOptions="Center" Color="#b51700" />
+            </Grid>
+    </ContentPage.Content>
+</ContentPage>

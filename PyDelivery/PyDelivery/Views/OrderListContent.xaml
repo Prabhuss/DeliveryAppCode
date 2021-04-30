@@ -1,0 +1,137 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="PyDelivery.Views.OrderListContent">
+
+    <ContentView.Resources>
+        <ResourceDictionary>
+
+            <!--  Common style for BoxView  -->
+            <Style x:Key="BoxViewStyle"  TargetType="BoxView">
+                <Setter Property="Color" Value="DarkGray" />
+                <Setter Property="VerticalOptions" Value="Center" />
+            </Style>
+
+            <!--  Common style for price labels  -->
+            <Style
+        x:Key="PriceLabelStyle"
+        TargetType="Label">
+                <Setter Property="HorizontalOptions" Value="StartAndExpand" />
+                <Setter Property="Margin" Value="16,0" />
+                <Setter Property="FontSize" Value="13" />
+            </Style>
+
+        </ResourceDictionary>
+    </ContentView.Resources>
+    <ContentView.Content>
+        <Frame Margin="2,5,2,5" HasShadow="True" Padding="0" BorderColor="Black" >
+            <StackLayout BackgroundColor="White">
+                <StackLayout x:Name="header" Padding="8,5,5,5" Orientation="Horizontal" BackgroundColor="#F2F3F4">
+                    <StackLayout Orientation="Vertical" Spacing="1" HorizontalOptions="Start">
+                        <Label Text="{Binding InvoiceId, StringFormat='Bill No: {0}'}" TextColor="#b51700" FontSize="Medium" FontAttributes="None"/>
+                    </StackLayout>
+                </StackLayout>
+
+                <StackLayout x:Name="body" Padding="0,0,0,0" Orientation="Vertical" Spacing="2" BackgroundColor="White">
+                    <Grid
+                                    BackgroundColor="{DynamicResource Gray-White}"
+                                    RowSpacing="2"
+                                    VerticalOptions="FillAndExpand"
+                                    HorizontalOptions="FillAndExpand">
+
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+                        <!--  Total Items  -->
+                        <Label
+                                        Grid.Row="0"
+                                        Margin="16,4,16,0"
+                                        FontFamily=""
+                                        Style="{StaticResource PriceLabelStyle}"
+                                        Text="Order Date :" />
+                        <Label
+                                        Grid.Row="0"
+                                        Grid.Column="1"
+                                        Margin="16,4,16,0"
+                                        FontFamily=""
+                                        HorizontalOptions="EndAndExpand"
+                                        HorizontalTextAlignment="End"
+                                        Style="{StaticResource PriceLabelStyle}"
+                                        Text="{Binding CreatedDate,  StringFormat='{0:MMM dd, yyyy hh:mm tt}'}" />
+                        <!--  Total MRP  -->
+                        <Label
+                                        Grid.Row="1"
+                                        Margin="16,4,16,0"
+                                        FontFamily=""
+                                        Style="{StaticResource PriceLabelStyle}"
+                                        Text="Payment Mode :" />
+                        <Label
+                                        Grid.Row="1"
+                                        Grid.Column="1"
+                                        Margin="16,4,16,0"
+                                        FontFamily=""
+                                        HorizontalOptions="EndAndExpand"
+                                        HorizontalTextAlignment="End"
+                                        Style="{StaticResource PriceLabelStyle}"
+                                        Text="{Binding PaymentMode, StringFormat='{0}'}" />
+                        <!--  Total MRP  -->
+                        <Label
+                                        Grid.Row="2"
+                                        Margin="16,4,16,0"
+                                        FontFamily=""
+                                        Style="{StaticResource PriceLabelStyle}"
+                                        Text="Phone Number :" />
+                        <Label
+                                        Grid.Row="2"
+                                        Grid.Column="1"
+                                        Margin="16,4,16,0"
+                                        FontFamily=""
+                                        HorizontalOptions="EndAndExpand"
+                                        HorizontalTextAlignment="End"
+                                        Style="{StaticResource PriceLabelStyle}"
+                                        Text="{Binding PrimaryPhone, StringFormat='{0}'}" />
+                        <!--  Total MRP  -->
+                        <Label
+                                        Grid.Row="3"
+                                        Margin="16,4,16,0"
+                                        FontFamily=""
+                                        Style="{StaticResource PriceLabelStyle}"
+                                        Text="Address Type:" />
+                        <Label
+                                        Grid.Row="3"
+                                        Grid.Column="1"
+                                        Margin="16,4,16,0"
+                                        FontFamily=""
+                                        HorizontalOptions="EndAndExpand"
+                                        HorizontalTextAlignment="End"
+                                        Style="{StaticResource PriceLabelStyle}"
+                                        Text="{Binding AddressTagName, StringFormat='{0}'}" />
+                        <!--  Separator  -->
+                        <BoxView
+                                        Grid.Row="4"
+                                        Grid.ColumnSpan="2"
+                                        HeightRequest="1"
+                                        Margin="10,4,10,0"
+                                        Style="{StaticResource BoxViewStyle}" />
+                        <Label Grid.Row="6" Grid.Column="0" Margin="16,4,16,4" Text="{Binding PayableAmount, StringFormat= 'Amount: Rs.{0}'}"  TextColor="Black" FontSize="Body" />
+                        <Label Grid.Row="6" Grid.Column="1" Margin="16,4,16,4" Text="{Binding OrderStatus,  StringFormat= 'Status: {0}'}" x:Name="orderStatus"  TextColor="Black" FontSize="Body"  HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
+                    </Grid>
+                </StackLayout>
+
+            </StackLayout>
+        </Frame>
+    </ContentView.Content>
+</ContentView>
